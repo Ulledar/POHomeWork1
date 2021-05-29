@@ -21,17 +21,26 @@ namespace POHomeWork1.Pages
 
         readonly WebDriverWait wait = new (driver, new TimeSpan(0, 0, 30));
 
-        public void RegisterUser(string user, string pass, string firstName, string lastName)
+        public void RegisterUser(string user, string pass, string first, string last)
         {
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(usernameField));
-            driver.FindElement(usernameField).Clear();
-            driver.FindElement(usernameField).SendKeys(user);
-            driver.FindElement(passwordField).Clear();
-            driver.FindElement(passwordField).SendKeys(pass);
-            driver.FindElement(firstnameField).Clear();
-            driver.FindElement(firstnameField).SendKeys(firstName);
-            driver.FindElement(lastnameField).Clear();
-            driver.FindElement(lastnameField).SendKeys(lastName);
+
+            IWebElement userName = driver.FindElement(usernameField);
+            userName.Clear();
+            userName.SendKeys(user);
+
+            IWebElement password = driver.FindElement(passwordField);
+            password.Clear();
+            password.SendKeys(pass);
+
+            IWebElement firstName = driver.FindElement(firstnameField);
+            firstName.Clear();
+            firstName.SendKeys(first);
+
+            IWebElement lastName = driver.FindElement(lastnameField);
+            lastName.Clear();
+            lastName.SendKeys(last);
+
             driver.FindElement(submitButton).Click();
         }
 
