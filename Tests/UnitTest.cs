@@ -33,8 +33,7 @@ namespace POHomeWork1
 
         private static IEnumerable<string[]> GetTestData()
         {
-            using (var csv = new CsvReader(new StreamReader("C:/Users/Ulledar/source/repos/POHomeWork1/Resources/NewUsers.csv"), CultureInfo.InvariantCulture))
-            //using (var csv = new CsvReader(new StreamReader(Directory.GetCurrentDirectory()), CultureInfo.InvariantCulture))
+            using (var csv = new CsvReader(new StreamReader(@"Resources/NewUsers.csv"), CultureInfo.InvariantCulture))
             {
                 while (csv.Read())
                 {
