@@ -13,6 +13,7 @@ namespace POHomeWork1.Pages
     public class MainPage : BaseTest
     {
         public static readonly string pageUrl = "http://testingchallenges.thetestingmap.org/challenge10.php";
+
         private readonly By usernameField = By.XPath("//input[@name='username']");
         private readonly By passwordField = By.XPath("//input[@name='password']");
         private readonly By firstnameField = By.XPath("//input[@name='firstname']");

@@ -21,13 +21,13 @@ namespace POHomeWork1
             MainPage mainPage = new();
             mainPage.RegisterUser(user,pass,first,last);
 
-            logger.Info("checking that user present in the table");
+            logger.Info("checking that user presents in the table");
             Assert.Multiple(() =>
             {
-                StringAssert.AreEqualIgnoringCase(mainPage.GetProfileText(user), user);
-                StringAssert.AreEqualIgnoringCase(mainPage.GetProfileText(pass), pass);
-                StringAssert.AreEqualIgnoringCase(mainPage.GetProfileText(first), first);
-                StringAssert.AreEqualIgnoringCase(mainPage.GetProfileText(last), last);
+                Assert.AreEqual(mainPage.GetProfileText(user), user);
+                Assert.AreEqual(mainPage.GetProfileText(pass), pass);
+                Assert.AreEqual(mainPage.GetProfileText(first), first);
+                Assert.AreEqual(mainPage.GetProfileText(last), last);
             });          
         }
 
