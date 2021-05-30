@@ -1,8 +1,7 @@
 ﻿using log4net;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using POHomeWork1.Pages;
+using POHomeWork1.Framework;
 
 namespace POHomeWork1.Tests
 {
@@ -16,7 +15,7 @@ namespace POHomeWork1.Tests
         {
             logger = LogManager.GetLogger(GetType());
             logger.Info("log4net initialized");
-            driver = new ChromeDriver();
+            driver = Settings.GetDriver("chrome");
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
         }

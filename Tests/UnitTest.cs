@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using POHomeWork1.Framework;
-using System.Threading;
 
 namespace POHomeWork1
 {
@@ -37,7 +36,7 @@ namespace POHomeWork1
             logger.Info("Navigate to login page");
             SiteNavigator.NavigateToLoginPage(driver);
 
-            logger.Info("Login user");
+            logger.Info("Logining user");
             LoginPage loginPage = new();
             loginPage.LoginUser(user, pass);
 
