@@ -9,7 +9,7 @@ using POHomeWork1.Framework;
 
 namespace POHomeWork1
 {
-    public class UnitTest : BaseTest
+    public class LoginTests : BaseTest
     {
         [Test]
         [Author("AlexGrech")]
