@@ -44,7 +44,6 @@ namespace POHomeWork1
             UserPage userPage = new();
             Assert.AreEqual(userPage.GetUserPageHeader(), userPage.GetHeaderString(), "Login was unsuccessful");
             Assert.AreEqual(driver.Url, userPage.GetUserPageUrl(), "The user url is different");
-
             
             logger.Info("Making a screenshot");
             Utils.MakeScreenshot(caseId);
