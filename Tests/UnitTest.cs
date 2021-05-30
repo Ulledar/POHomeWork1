@@ -44,8 +44,6 @@ namespace POHomeWork1
             logger.Info("Checking that login was successful");
             UserPage userPage = new();
             Assert.AreEqual(userPage.GetUserPageHeader(), userPage.GetHeaderString(), "Login was unsuccessful");
-
-            Thread.Sleep(3000);
         }
 
         private static IEnumerable<string[]> GetTestData()
