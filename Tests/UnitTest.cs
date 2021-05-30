@@ -2,10 +2,11 @@ using CsvHelper;
 using NUnit.Framework;
 using POHomeWork1.Pages;
 using POHomeWork1.Tests;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using POHomeWork1.Framework;
+using System.Threading;
 
 namespace POHomeWork1
 {
@@ -17,18 +18,30 @@ namespace POHomeWork1
         [TestCaseSource("GetTestData")]
         public void Test1(string user, string pass, string first, string last)
         {
-            logger.Info("user registration");
+            logger.Info("Test started. Navigate to main page");
+            SiteNavigator.NavigateToMainPage(driver);
+
+            logger.Info("User registration");
             MainPage mainPage = new();
             mainPage.RegisterUser(user,pass,first,last);
 
-            logger.Info("checking that user presents in the table");
+            logger.Info("Checking that user presents in the table");
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(mainPage.GetProfileText(user), user);
                 Assert.AreEqual(mainPage.GetProfileText(pass), pass);
                 Assert.AreEqual(mainPage.GetProfileText(first), first);
                 Assert.AreEqual(mainPage.GetProfileText(last), last);
-            });          
+            });
+
+            logger.Info("Navigate to login page");
+            SiteNavigator.NavigateToLoginPage(driver);
+
+            logger.Info("Login user");
+            LoginPage loginPage = new();
+            loginPage.LoginUser(user, pass);
+
+            Thread.Sleep(3000);
         }
 
         private static IEnumerable<string[]> GetTestData()

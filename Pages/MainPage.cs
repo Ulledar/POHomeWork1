@@ -1,12 +1,7 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using POHomeWork1.Tests;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POHomeWork1.Pages
 {
@@ -14,35 +9,35 @@ namespace POHomeWork1.Pages
     {
         public static readonly string pageUrl = "http://testingchallenges.thetestingmap.org/challenge10.php";
 
-        private readonly By usernameField = By.XPath("//input[@name='username']");
-        private readonly By passwordField = By.XPath("//input[@name='password']");
-        private readonly By firstnameField = By.XPath("//input[@name='firstname']");
-        private readonly By lastnameField = By.XPath("//input[@name='lastname']");
-        private readonly By submitButton = By.XPath("//input[@value='Submit']");
+        private readonly By _usernameField = By.XPath("//input[@name='username']");
+        private readonly By _passwordField = By.XPath("//input[@name='password']");
+        private readonly By _firstnameField = By.XPath("//input[@name='firstname']");
+        private readonly By _lastnameField = By.XPath("//input[@name='lastname']");
+        private readonly By _submitButton = By.XPath("//input[@value='Submit']");
 
         readonly WebDriverWait wait = new (driver, new TimeSpan(0, 0, 30));
 
         public void RegisterUser(string user, string pass, string first, string last)
         {
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(usernameField));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_usernameField));
 
-            IWebElement userName = driver.FindElement(usernameField);
+            IWebElement userName = driver.FindElement(_usernameField);
             userName.Clear();
             userName.SendKeys(user);
 
-            IWebElement password = driver.FindElement(passwordField);
+            IWebElement password = driver.FindElement(_passwordField);
             password.Clear();
             password.SendKeys(pass);
 
-            IWebElement firstName = driver.FindElement(firstnameField);
+            IWebElement firstName = driver.FindElement(_firstnameField);
             firstName.Clear();
             firstName.SendKeys(first);
 
-            IWebElement lastName = driver.FindElement(lastnameField);
+            IWebElement lastName = driver.FindElement(_lastnameField);
             lastName.Clear();
             lastName.SendKeys(last);
 
-            driver.FindElement(submitButton).Click();
+            driver.FindElement(_submitButton).Click();
         }
 
         public string GetProfileText(string value)

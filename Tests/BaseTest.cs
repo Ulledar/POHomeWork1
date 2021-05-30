@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using POHomeWork1.Pages;
-using System;
 
 namespace POHomeWork1.Tests
 {
@@ -21,8 +19,6 @@ namespace POHomeWork1.Tests
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
-            driver.Navigate().GoToUrl(MainPage.pageUrl);
-            logger.Info("Test started");
         }
 
         [OneTimeTearDown]
