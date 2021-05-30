@@ -9,9 +9,9 @@ namespace POHomeWork1.Pages
     {
         public static readonly string pageUrl = "http://testingchallenges.thetestingmap.org/login/login.php";
 
-        private readonly By _usernameField = By.XPath("//input[@name='username']");
-        private readonly By _passwordField = By.XPath("//input[@name='password']");
-        private readonly By _loginButton = By.XPath("//button[contains(text(), 'log in')]");
+        readonly By _usernameField = By.XPath("//input[@name='username']");
+        readonly By _passwordField = By.XPath("//input[@name='password']");
+        readonly By _loginButton = By.XPath("//button[contains(text(), 'log in')]");
 
         readonly WebDriverWait wait = new(driver, new TimeSpan(0, 0, 30));
 

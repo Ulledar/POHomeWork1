@@ -5,15 +5,15 @@ using System;
 
 namespace POHomeWork1.Pages
 {
-    public class MainPage : BaseTest
+    class MainPage : BaseTest
     {
         public static readonly string pageUrl = "http://testingchallenges.thetestingmap.org/challenge10.php";
 
-        private readonly By _usernameField = By.XPath("//input[@name='username']");
-        private readonly By _passwordField = By.XPath("//input[@name='password']");
-        private readonly By _firstnameField = By.XPath("//input[@name='firstname']");
-        private readonly By _lastnameField = By.XPath("//input[@name='lastname']");
-        private readonly By _submitButton = By.XPath("//input[@value='Submit']");
+        readonly By _usernameField = By.XPath("//input[@name='username']");
+        readonly By _passwordField = By.XPath("//input[@name='password']");
+        readonly By _firstnameField = By.XPath("//input[@name='firstname']");
+        readonly By _lastnameField = By.XPath("//input[@name='lastname']");
+        readonly By _submitButton = By.XPath("//input[@value='Submit']");
 
         readonly WebDriverWait wait = new (driver, new TimeSpan(0, 0, 30));
 

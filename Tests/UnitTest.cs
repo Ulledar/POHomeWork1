@@ -28,10 +28,10 @@ namespace POHomeWork1
             logger.Info("Checking that user presents in the table");
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(mainPage.GetProfileText(user), user);
-                Assert.AreEqual(mainPage.GetProfileText(pass), pass);
-                Assert.AreEqual(mainPage.GetProfileText(first), first);
-                Assert.AreEqual(mainPage.GetProfileText(last), last);
+                Assert.AreEqual(mainPage.GetProfileText(user), user, "No such Username");
+                Assert.AreEqual(mainPage.GetProfileText(pass), pass, "No such Password");
+                Assert.AreEqual(mainPage.GetProfileText(first), first, "No such Name");
+                Assert.AreEqual(mainPage.GetProfileText(last), last, "No such Last Name");
             });
 
             logger.Info("Navigate to login page");
@@ -40,6 +40,10 @@ namespace POHomeWork1
             logger.Info("Login user");
             LoginPage loginPage = new();
             loginPage.LoginUser(user, pass);
+
+            logger.Info("Checking that login was successful");
+            UserPage userPage = new();
+            Assert.AreEqual(userPage.GetUserPageHeader(), userPage.GetHeaderString(), "Login was unsuccessful");
 
             Thread.Sleep(3000);
         }
