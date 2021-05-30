@@ -3,11 +3,12 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Opera;
+using POHomeWork1.Tests;
 using System;
 
 namespace POHomeWork1.Framework
 {
-    class Settings
+    class Settings : BaseTest
     {
         public static IWebDriver GetDriver(string browserType)
         {
