@@ -15,7 +15,7 @@ namespace POHomeWork1
         [Author("AlexGrech")]
         [Category("Test case ID: 1")]
         [TestCaseSource("GetTestData")]
-        public void Test1(string user, string pass, string first, string last, string caseId)
+        public void Test1(string user, string pass, string first, string last, string testcaseId)
         {
             logger.Info("Test started. Navigate to main page");
             SiteNavigator.NavigateToMainPage(driver);
@@ -46,7 +46,7 @@ namespace POHomeWork1
             Assert.AreEqual(driver.Url, userPage.GetUserPageUrl(), "The user url is different");
             
             logger.Info("Making a screenshot");
-            Utils.MakeScreenshot(caseId);
+            Utils.MakeScreenshot(testcaseId);
         }
 
         private static IEnumerable<string[]> GetTestData()
@@ -59,9 +59,9 @@ namespace POHomeWork1
                     string pass = csv[1];
                     string first = csv[2];
                     string last = csv[3];
-                    string caseId = csv[4];
+                    string testId = csv[4];
 
-                    yield return new[] { user, pass, first, last, caseId};
+                    yield return new[] { user, pass, first, last, testId};
                 }
             }
         }
