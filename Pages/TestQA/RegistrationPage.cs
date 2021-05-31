@@ -29,6 +29,7 @@ namespace POHomeWork1.Pages.TestQA
         readonly By _currentAddressField = By.Id("currentAddress");
         readonly By _selectState = By.Id("react-select-3-input");
         readonly By _selectCity = By.Id("react-select-4-input");
+        readonly By _closeCompletedForm = By.Id("closeLargeModal");
 
         #endregion
 
