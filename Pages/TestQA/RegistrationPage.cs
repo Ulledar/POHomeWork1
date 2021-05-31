@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using POHomeWork1.Framework;
 using POHomeWork1.Tests;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace POHomeWork1.Pages.TestQA
@@ -24,6 +25,8 @@ namespace POHomeWork1.Pages.TestQA
         readonly By _hobbieSport = By.XPath("//label[@for='hobbies-checkbox-1']");
         readonly By _hobbieRead = By.XPath("//label[@for='hobbies-checkbox-2']");
         readonly By _hobbieMusic = By.XPath("//label[@for='hobbies-checkbox-3']");
+        readonly By _uploadPicture = By.Id("uploadPicture");
+        readonly By _submitButton = By.Id("submit");
 
         #endregion
 
@@ -93,10 +96,10 @@ namespace POHomeWork1.Pages.TestQA
             driver.FindElement(_birthDateField).Click();
 
             driver.FindElement(By.CssSelector("select.react-datepicker__month-select")).Click();
-            driver.FindElement(By.XPath("//option[@value='" + Utils.RandomNumber(0,11).ToString() + "']")).Click();
+            driver.FindElement(By.XPath("//option[@value='" + Utils.RandomNumber(0,12).ToString() + "']")).Click();
 
             driver.FindElement(By.CssSelector("select.react-datepicker__year-select")).Click();
-            driver.FindElement(By.XPath("//option[@value='"+ Utils.RandomNumber(1900,2021).ToString() +"']")).Click();
+            driver.FindElement(By.XPath("//option[@value='"+ Utils.RandomNumber(1900,2022).ToString() +"']")).Click();
 
             driver.FindElement(By.XPath("//div[@class='react-datepicker__week']//div[contains(text()," + Utils.RandomNumber(1,31).ToString() + ")]")).Click();
         }
@@ -114,6 +117,18 @@ namespace POHomeWork1.Pages.TestQA
             if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieSport).Click();
             if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieRead).Click();
             if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieMusic).Click();
+        }
+
+        public void UploadPicture()
+        {
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string picturePath = path + @"\Resources\TestPictures\" + Utils.RandomNumber(1, 4) + ".jpg";
+            driver.FindElement(_uploadPicture).SendKeys(picturePath);
+        }
+
+        public void PressSubmitPutton()
+        {
+            driver.FindElement(_submitButton).Click();
         }
     }
 }

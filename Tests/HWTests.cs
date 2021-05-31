@@ -13,7 +13,7 @@ namespace POHomeWork1
 {
     public class HWTests : BaseTest
     {
-        
+        [Ignore("q")]
         [Test]
         [Author("AlexGrech")]
         [Category("Test case ID: 1")]
@@ -56,7 +56,6 @@ namespace POHomeWork1
             Utils.MakeScreenshot(testcaseId);
         }
 
-        [Ignore("q")]
         [Test]
         [Author("AlexGrech")]
         [Category("Test case ID: 2")]
@@ -88,6 +87,12 @@ namespace POHomeWork1
 
             logger.Info("Random hobbies");
             regPage.ChooseRandomHobbies();
+
+            logger.Info("Upload a picture");
+            regPage.UploadPicture();
+
+            logger.Info("Submit");
+            regPage.PressSubmitPutton();
 
             Thread.Sleep(5000);
         }
