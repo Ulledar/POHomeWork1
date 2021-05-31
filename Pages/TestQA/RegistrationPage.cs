@@ -4,7 +4,6 @@ using POHomeWork1.Framework;
 using POHomeWork1.Tests;
 using System;
 using System.IO;
-using System.Threading;
 
 namespace POHomeWork1.Pages.TestQA
 {

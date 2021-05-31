@@ -7,7 +7,6 @@ using System.Globalization;
 using System.IO;
 using POHomeWork1.Framework;
 using POHomeWork1.Pages.TestQA;
-using System.Threading;
 
 namespace POHomeWork1
 {
