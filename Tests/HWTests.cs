@@ -13,7 +13,8 @@ namespace POHomeWork1
 {
     public class HWTests : BaseTest
     {
-        [Ignore("q")]
+        public static string testCaseName;
+
         [Test]
         [Author("AlexGrech")]
         [Category("Test case ID: 1")]
@@ -21,6 +22,8 @@ namespace POHomeWork1
         [Description("Creating user and checking his exist into the table and login possibility")]
         public void BugHuntTest(string user, string pass, string first, string last, string testcaseId)
         {
+            testCaseName = testcaseId;
+
             logger.Info("Test started. Navigate to main page");
             SiteNavigator.NavigateToBHMainPage(driver);
 
@@ -51,9 +54,6 @@ namespace POHomeWork1
                 Assert.AreEqual(userPage.GetUserPageHeader(), userPage.GetHeaderString(), "Login was unsuccessful");
                 Assert.AreEqual(driver.Url, userPage.GetUserPageUrl(), "User url is different");
             });
-            
-            logger.Info("Making a screenshot");
-            Utils.MakeScreenshot(testcaseId);
         }
 
         [Test]
@@ -62,6 +62,7 @@ namespace POHomeWork1
         [Description("Positive test")]
         public void ToolsQaTest()
         {
+            testCaseName = "ToolsQa";
             RegistrationPage regPage = new();
 
             logger.Info("Test started. Navigate to registration page");
@@ -80,7 +81,6 @@ namespace POHomeWork1
 
             logger.Info("Choosing random birth date");
             regPage.ChooseRandomBirthDate();
-
             
             logger.Info("Choosing subject");
             regPage.ChooseSubject();
@@ -91,10 +91,15 @@ namespace POHomeWork1
             logger.Info("Upload a picture");
             regPage.UploadPicture();
 
+            logger.Info("Fill address field");
+            string address = "City of Dreams, Pushkina str, block Kolotushkina";
+            regPage.FillAddressFild(address);
+
+            logger.Info("Choosing the city");
+            regPage.SelectCity();
+
             logger.Info("Submit");
             regPage.PressSubmitPutton();
-
-            Thread.Sleep(5000);
         }
 
         private static IEnumerable<string[]> GetLoginTestData()

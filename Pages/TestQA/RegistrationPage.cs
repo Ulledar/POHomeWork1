@@ -27,6 +27,9 @@ namespace POHomeWork1.Pages.TestQA
         readonly By _hobbieMusic = By.XPath("//label[@for='hobbies-checkbox-3']");
         readonly By _uploadPicture = By.Id("uploadPicture");
         readonly By _submitButton = By.Id("submit");
+        readonly By _currentAddressField = By.Id("currentAddress");
+        readonly By _selectState = By.Id("react-select-3-input");
+        readonly By _selectCity = By.Id("react-select-4-input");
 
         #endregion
 
@@ -124,6 +127,24 @@ namespace POHomeWork1.Pages.TestQA
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             string picturePath = path + @"\Resources\TestPictures\" + Utils.RandomNumber(1, 4) + ".jpg";
             driver.FindElement(_uploadPicture).SendKeys(picturePath);
+        }
+
+        public void FillAddressFild(string address)
+        {
+            IWebElement curAddress = driver.FindElement(_currentAddressField);
+            curAddress.Clear();
+            curAddress.SendKeys(address);
+        }
+
+        public void SelectCity()
+        {
+            IWebElement state = driver.FindElement(_selectState);
+            state.SendKeys("Uttar Pradesh");
+            state.SendKeys(Keys.Enter);
+
+            IWebElement city = driver.FindElement(_selectCity);
+            city.SendKeys("Merrut");
+            city.SendKeys(Keys.Enter);
         }
 
         public void PressSubmitPutton()

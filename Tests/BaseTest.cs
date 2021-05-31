@@ -14,16 +14,22 @@ namespace POHomeWork1.Tests
         public void SetUp()
         {
             logger = LogManager.GetLogger(GetType());
-            logger.Info("log4net initialized");
             driver = Settings.GetDriver("chrome");
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
         }
 
         [OneTimeTearDown]
-        public void TearDown()
+        public void OneTimeTearDown()
         {
             driver.Quit();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            logger.Info("Making a screenshot");
+            Utils.MakeScreenshot(HWTests.testCaseName);
         }
     }
 }
