@@ -12,5 +12,10 @@ namespace POHomeWork1.Framework
             string filePath = "C:/Users/Ulledar/source/repos/POHomeWork1/Resources/Screenshots/";
             ss.SaveAsFile(filePath + s + ".png", ScreenshotImageFormat.Png);
         }
+
+        public static int RandomNumber(int min, int max)
+        {
+            return new Random().Next(min, max);
+        }
     }
 }
