@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using POHomeWork1.Framework;
 using POHomeWork1.Tests;
 using System;
+using System.Threading;
 
 namespace POHomeWork1.Pages.TestQA
 {
@@ -10,18 +11,21 @@ namespace POHomeWork1.Pages.TestQA
     {
         public static readonly string pageUrl = "https://demoqa.com/automation-practice-form";
 
+        #region Locators
         readonly By _firstnameField = By.Id("firstName");
         readonly By _lastnameField = By.Id("lastName");
         readonly By _emailField = By.Id("userEmail");
         readonly By _maleGender = By.XPath("//label[@for='gender-radio-1']");
         readonly By _femaleGender = By.XPath("//label[@for='gender-radio-2']");
         readonly By _otherGender = By.XPath("//label[@for='gender-radio-3']");
-        readonly By _maleGenderButton = By.Id("gender-radio-1");
-        readonly By _femaleGenderButton = By.Id("gender-radio-2");
-        readonly By _otherGenderButton = By.Id("gender-radio-3");
         readonly By _phoneNumberField = By.Id("userNumber");
         readonly By _birthDateField = By.Id("dateOfBirthInput");
-        readonly By _subjectField = By.XPath("//div[@class='subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3']");
+        readonly By _subjectField = By.Id("subjectsInput");
+        readonly By _hobbieSport = By.XPath("//label[@for='hobbies-checkbox-1']");
+        readonly By _hobbieRead = By.XPath("//label[@for='hobbies-checkbox-2']");
+        readonly By _hobbieMusic = By.XPath("//label[@for='hobbies-checkbox-3']");
+
+        #endregion
 
         readonly WebDriverWait wait = new(driver, new TimeSpan(0, 0, 30));
 
@@ -92,9 +96,9 @@ namespace POHomeWork1.Pages.TestQA
             driver.FindElement(By.XPath("//option[@value='" + Utils.RandomNumber(0,11).ToString() + "']")).Click();
 
             driver.FindElement(By.CssSelector("select.react-datepicker__year-select")).Click();
-            driver.FindElement(By.XPath("//option[@value='"+ Utils.RandomNumber(1900,2100).ToString() +"']")).Click();
+            driver.FindElement(By.XPath("//option[@value='"+ Utils.RandomNumber(1900,2021).ToString() +"']")).Click();
 
-            driver.FindElement(By.XPath("//div[@class='react-datepicker__week']//div[contains(text(),"+Utils.RandomNumber(1,31).ToString()+")]")).Click();
+            driver.FindElement(By.XPath("//div[@class='react-datepicker__week']//div[contains(text()," + Utils.RandomNumber(1,31).ToString() + ")]")).Click();
         }
 
         public void ChooseSubject()
@@ -103,6 +107,13 @@ namespace POHomeWork1.Pages.TestQA
             field.Clear();
             field.SendKeys("English");
             field.SendKeys(Keys.Enter);
+        }
+
+        public void ChooseRandomHobbies()
+        {
+            if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieSport).Click();
+            if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieRead).Click();
+            if (Utils.RandomNumber(0, 2) == 1) driver.FindElement(_hobbieMusic).Click();
         }
     }
 }
