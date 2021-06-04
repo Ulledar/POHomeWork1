@@ -10,6 +10,7 @@ using POHomeWork1.Pages.TestQA;
 
 namespace POHomeWork1
 {
+    [TestFixture]
     public class HWTests : BaseTest
     {
         public static string testCaseName;
